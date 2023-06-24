@@ -9,7 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.randomjokesapplication.presentation.JokeScreen
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.randomjokesapplication.presentation.JokesViewModel
 import com.example.randomjokesapplication.ui.theme.RandomJokesApplicationTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,14 +26,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background,
                     shape = RoundedCornerShape(5.dp)
                 ) {
-                    JokeScreen(
-                        JokesViewModel.State(),
-                        {},
-                        {},
-                        {},
-                        0,
-                        modifier = Modifier.fillMaxSize()
-                    )
+                    val viewModel: JokesViewModel = viewModel()
                 }
             }
         }
