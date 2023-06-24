@@ -1,10 +1,11 @@
-package com.example.randomjokesapplication.domain.use_case
+package com.example.randomjokesapplication.domain.use_case // ktlint-disable package-name
 
 import com.example.randomjokesapplication.domain.repository.JokeRepository
 import javax.inject.Inject
 
-sealed class JokesUseCaseFactory @Inject constructor(
+class JokesUseCaseFactory @Inject constructor(
     private val repository: JokeRepository
 ) {
-
+    val getJokeUseCase = GetRandomJokeUseCase(repository)
+    val getRandomJokeByTypeUseCase = GetRandomJokeByTypeUseCase(repository)
 }

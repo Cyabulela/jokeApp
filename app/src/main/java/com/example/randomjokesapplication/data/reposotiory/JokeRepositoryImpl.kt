@@ -7,22 +7,14 @@ import com.example.randomjokesapplication.domain.repository.JokeRepository
 import javax.inject.Inject
 
 class JokeRepositoryImpl @Inject constructor(
-    private val joke : JokesApi
+    private val joke: JokesApi
 ) : JokeRepository {
 
     override suspend fun getRandomJoke(): Joke {
         return joke.getRandomJoke().toJoke()
     }
 
-    override suspend fun getRandomJokes(): List<Joke> {
-        return joke.getRandomJokes().map { it.toJoke() }
-    }
-
-    override suspend fun getJokeByType(type: String): Joke {
+    override suspend fun getRandomJokeByType(type: String): Joke {
         return joke.getJokeByType(type).toJoke()
-    }
-
-    override suspend fun getRandomJokesByType(type: String): List<Joke> {
-        return joke.getRandomJokesByType(type).map { it.toJoke() }
     }
 }
