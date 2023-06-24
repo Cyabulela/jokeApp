@@ -11,10 +11,11 @@ class JokeRepositoryImpl @Inject constructor(
 ) : JokeRepository {
 
     override suspend fun getRandomJoke(): Joke {
-        return joke.getRandomJoke().toJoke()
+        return joke.getRandomJoke().body()?.toJoke() ?: throw Exception("Result type don't match")
     }
 
     override suspend fun getRandomJokeByType(type: String): Joke {
-        return joke.getJokeByType(type).toJoke()
+        return joke.getJokeByType(type).body()?.toJoke()
+            ?: throw Exception("Result type don't match")
     }
 }

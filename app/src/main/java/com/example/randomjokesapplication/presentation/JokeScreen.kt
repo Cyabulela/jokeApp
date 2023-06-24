@@ -20,7 +20,7 @@ fun JokeScreen(
     state: JokesViewModel.State,
     share: (Joke) -> Unit,
     onNextClick: () -> Unit,
-    onDropDownSelect : (Int) -> Unit,
+    onDropDownSelect: (Int) -> Unit,
     dropDownSelectedIndex: Int,
     modifier: Modifier = Modifier
 ) {
@@ -35,7 +35,7 @@ fun JokeScreen(
                 .align(Alignment.CenterHorizontally)
         )
 
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
         val menus = JokesType.values().map {
             it.jokeType

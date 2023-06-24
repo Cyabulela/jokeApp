@@ -10,10 +10,10 @@ suspend inline fun <T> FlowCollector<Resources<T>>.withHandledException(action: 
         action()
     } catch (e: HttpException) {
         e.printStackTrace()
-        emit(Resources.Error(""))
+        emit(Resources.Error(e.localizedMessage ?: "Unexpected reposnse"))
     } catch (e: IOException) {
         e.printStackTrace()
-        emit(Resources.Error(""))
+        emit(Resources.Error("Please check your internet connection."))
     } catch (e: Exception) {
         e.printStackTrace()
         emit(Resources.Error(e.localizedMessage ?: "Unknown error occurred"))

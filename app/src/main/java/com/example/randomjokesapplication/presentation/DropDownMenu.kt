@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -27,6 +28,7 @@ fun Spinner(
     Box(modifier = modifier.wrapContentSize()) {
         Text(
             text = menus[selectedIndex],
+            style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.clickable(onClick = { expanded = true })
         )
 
