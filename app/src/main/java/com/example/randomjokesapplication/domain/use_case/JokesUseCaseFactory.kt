@@ -4,7 +4,7 @@ import com.example.randomjokesapplication.domain.repository.JokeRepository
 import javax.inject.Inject
 
 class JokesUseCaseFactory @Inject constructor(
-    private val repository: JokeRepository
+    repository: JokeRepository
 ) {
     val getJokeUseCase = GetRandomJokeUseCase(repository)
     val getRandomJokeByTypeUseCase = GetRandomJokeByTypeUseCase(repository)

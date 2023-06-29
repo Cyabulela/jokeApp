@@ -10,6 +10,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.randomjokesapplication.presentation.JokeScreen
 import com.example.randomjokesapplication.presentation.JokesViewModel
 import com.example.randomjokesapplication.ui.theme.RandomJokesApplicationTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,6 +28,20 @@ class MainActivity : ComponentActivity() {
                     shape = RoundedCornerShape(5.dp)
                 ) {
                     val viewModel: JokesViewModel = viewModel()
+                    JokeScreen(
+                        state = viewModel.state,
+                        share = {
+                            viewModel.shareJoke(it, this)
+                        },
+                        onNextClick = viewModel::nextJoke,
+                        onDropDownSelect = viewModel::onDropDownMenuSelect,
+                        onToggleDropDownMenu = viewModel::onDropDownMenuExpandedToggle,
+                        errorVisibility = viewModel::errorDismissal,
+                        dropDownSelectedIndex = viewModel.selectedDropDownMenuIndex,
+                        dropDownMenuExpanded = viewModel.dropDownMenuExpanded,
+                        modifier = Modifier
+                            .fillMaxSize()
+                    )
                 }
             }
         }
