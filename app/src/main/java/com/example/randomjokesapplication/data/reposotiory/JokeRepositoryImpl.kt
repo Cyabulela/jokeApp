@@ -9,13 +9,13 @@ import javax.inject.Inject
 class JokeRepositoryImpl @Inject constructor(
     private val joke: JokesApi
 ) : JokeRepository {
-
+	
     override suspend fun getRandomJoke(): Joke {
         return joke.getRandomJoke().body()?.toJoke() ?: throw Exception("Result type don't match")
     }
-
+	
     override suspend fun getRandomJokeByType(type: String): Joke {
-        return joke.getJokeByType(type).body()?.toJoke()
+        return joke.getJokeByType(type).body()?.first()?.toJoke()
             ?: throw Exception("Result type don't match")
     }
 }

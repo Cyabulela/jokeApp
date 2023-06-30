@@ -17,6 +17,7 @@ import com.example.randomjokesapplication.presentation.JokesViewModel.State
  */
 @Composable
 fun JokeScreen(
+    modifier: Modifier = Modifier,
     state: State,
     share: (Joke) -> Unit,
     onNextClick: () -> Unit,
@@ -24,8 +25,7 @@ fun JokeScreen(
     onToggleDropDownMenu: (Boolean) -> Unit,
     errorVisibility: (Boolean) -> Unit,
     dropDownSelectedIndex: Int = 0,
-    dropDownMenuExpanded: Boolean = false,
-    modifier: Modifier = Modifier
+    dropDownMenuExpanded: Boolean = false
 ) {
     Box(
         modifier = modifier,
@@ -46,7 +46,7 @@ fun JokeScreen(
                 strokeWidth = 2.dp
             )
         }
-
+		
         if (state.error.isErrorVisible) {
             ErrorAlertDialog(
                 error = state.error,
@@ -60,10 +60,11 @@ fun JokeScreen(
 @Composable
 private fun PreviewJokeScreen() {
     JokeScreen(
+        modifier = Modifier.fillMaxSize(),
         state = State(
             joke = Joke(
                 punchline = "The karma invents trust which is not hermetic.",
-                setup = "Never ransack a furner.",
+                setup = "Never ransack a turner.",
                 type = "random"
             )
         ),
@@ -71,7 +72,6 @@ private fun PreviewJokeScreen() {
         {},
         {},
         {},
-        {},
-        modifier = Modifier.fillMaxSize()
+        {}
     )
 }
