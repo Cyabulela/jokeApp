@@ -75,6 +75,7 @@ class JokesViewModel @Inject constructor(
 	
     fun errorDismissal(value: Boolean) {
         state = state.copy(error = ErrorHandler(isErrorVisible = value, errorMessage = ""))
+        nextJoke()
     }
 	
     fun shareJoke(joke: Joke, context: Context) {
